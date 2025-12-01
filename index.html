@@ -31,7 +31,7 @@ inset 0 1px 3px 0 rgba(0, 0, 0, .16), 0 1px 0 0 rgba(63, 68, 74, .1);-moz-box-sh
 span,.menu>li>ul li:hover a:before { color: #f56019}.menu ul>li>a span {font-size: .857em;display: inline-block;position: absolute;right: 1em;top: 50%;background: #fff;border: 1px solid #d0d0d3;line-height: 1em;height: 1em;padding: 0.4em 0.7em;margin: -0.9em 0 0;color: #000;text-indent: 0;text-align: center;-webkit-border-radius: 0.769em;-moz-border-radius: 769em;border-radius: 769em;text-shadow: 0 0 0 rgba(255,255,255,.01);} div.sombreada_css3 {border-radius: 8px; background-color: #f56019;width: 100%px;padding: 12px;color: #002399;box-shadow: 0px 
 1px 1px #333;-webkit-box-shadow: 0px 1px 1px #333; -moz-box-shadow: 0px 1px 1px #333;}
 
-/* SEARCH BAR CSS */
+/* NUEVO - SEARCH BAR CSS */
 .search-container {
   width: auto;
   margin: 15px 0;
@@ -58,7 +58,7 @@ span,.menu>li>ul li:hover a:before { color: #f56019}.menu ul>li>a span {font-siz
   color: #999;
 }
 
-/* EN VIVO STYLE */
+/* NUEVO -  EN VIVO STYLE */
 .live {
   text-transform: uppercase;
 }
@@ -221,6 +221,7 @@ span,.menu>li>ul li:hover a:before { color: #f56019}.menu ul>li>a span {font-siz
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://www.deportesenhd.de/js/tiempo.js"></script>
 
+<!-- NUEVO - FUNCIONAMIENTO DE EN VIVO  -->
 <script>
 document.addEventListener("DOMContentLoaded", function () {
     const spans = document.querySelectorAll("span.t");
@@ -232,30 +233,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // TU CONVERSIÓN (FUNCIONA PERFECTO)
         const eventInSpain = new Date(`${date}T${time}:00+01:00`);
-
         const eventLocal = new Date(
             eventInSpain.toLocaleString("en-US", {
                 timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone
             })
         );
-
         const now = new Date();
-
         // RANGO DE EN VIVO (2 HORAS)
         const endLive = new Date(eventLocal.getTime() + 2 * 60 * 60 * 1000);
-
         const li = span.closest("li");
         if (!li) return;
-
         // ACTIVAR EN VIVO
         if (now >= eventLocal && now <= endLive) {
             span.textContent = "En Vivo";
             span.classList.remove("t");
             span.classList.add("live");
         }
-
         // === ELIMINAR EL <li> EXACTAMENTE 2 HORAS DESPUÉS DEL EVENTO ===
-
         const msToDelete = endLive.getTime() - now.getTime();
         if (msToDelete <= 0) {
             li.remove();
@@ -285,6 +279,8 @@ document.addEventListener("DOMContentLoaded", function () {
         </div>
       </center>
 
+
+      <!-- NUEVO - BUSCADOR EN LOS HTML  -->
       <li style="background: #fff; border: none; padding: 10px 0; height: auto;">
         <div class="search-container" style="margin: 0; padding: 0 10px;">
           <input type="text" id="searchInput" placeholder="Buscar un partido por nombre o torneo...">
@@ -314,7 +310,7 @@ LaLiga: Rayo Vallecano vs Valencia
 
 <li class="ENG"><a href="#">
 Championship: Birmingham City vs Watford
-<span class="t" data-date="2025-12-01" data-time="22:00">22:00</span></a>
+<span class="t" data-date="2025-12-01" data-time="22:30">22:30</span></a>
 <ul>
 <li class="subitem1"><a href="/eventos.html?r=aHR0cHM6Ly9zdHJlYW12djMzLmxhdC9nbG9iYWwxLnBocD9jaGFubmVsPWRpc25leTQ=" target="_blank">Disney+<span>Calidad 720p</span></a></li>
 <li class="subitem1"><a href="/eventos.html?r=aHR0cHM6Ly9zdHJlYW12djMzLmxhdC9nbG9iYWwxLnBocD9jaGFubmVsPWVzcG43" target="_blank">ESPN 7<span>Calidad 720p</span></a></li>
@@ -365,6 +361,8 @@ NBA: Suns vs Lakers
 </ul>
 </li>
 
+
+
 </ul>
 </div>
 
@@ -394,7 +392,7 @@ NBA: Suns vs Lakers
 
 <br>
 
-<!--  SISTEMA DE BUSQUEDA DE EVENTOS -->
+<!--  NUEVO - SISTEMA DE BUSQUEDA DE EVENTOS SCRIPT -->
 <script>
 (function(){
   $(function(){
